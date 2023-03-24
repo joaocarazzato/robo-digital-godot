@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce2o7lkax50x2"]
+
+[ext_resource type="Script" path="res://ScriptRobo.gd" id="1_nwws5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72n1p"]
+albedo_color = Color(0.337255, 0.419608, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8q88c"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7jf6h"]
+radius = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kld10"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n2ut"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s83es"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_nwws5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 853.0
+offset_top = 552.0
+offset_right = 1140.0
+offset_bottom = 637.0
+text = "Get Pos"
+metadata/_edit_use_anchors_ = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="CanvasLayer"]
+
+[node name="TopoPonta_PinJoint" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145028, -2.51026, 0.126513)
+node_a = NodePath("../PontaGarra_RigidBody3D")
+node_b = NodePath("../Topo_RigidBody3D")
+
+[node name="BaseTopo_PinJoint2" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9669, -12.2431, -0.320761)
+rotation_edit_mode = 1
+node_a = NodePath("../Topo_RigidBody3D")
+node_b = NodePath("../BaseGarra_StaticBody3D")
+
+[node name="BaseTopo_PinJoint" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8928, -37.1531, -0.0517042)
+rotation_edit_mode = 1
+node_a = NodePath("../Topo_RigidBody3D")
+node_b = NodePath("../BaseGarra_StaticBody3D")
+
+[node name="BaseGarra_StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.938, -37.5304, 0.126513)
+axis_lock_angular_z = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="BaseGarra_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0384684, 0.0798006, 0)
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_72n1p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseGarra_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0370641, 0.0815711, 0)
+shape = SubResource("BoxShape3D_8q88c")
+
+[node name="Topo_RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4003, 12.1265, 0.217353)
+disable_mode = 2
+input_ray_pickable = false
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.01
+gravity_scale = 0.0
+sleeping = true
+can_sleep = false
+freeze_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Topo_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0706185, 0.101327, -0.0908403)
+shape = SubResource("SphereShape3D_7jf6h")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Topo_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0706185, 0.101327, -0.0908403)
+radius = 3.0
+material = SubResource("StandardMaterial3D_kld10")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.458742, 0.888569, 0, -0.888569, -0.458742, -12.395, 16.0318, -7.95591)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.52022, 0.854032, 0, -0.854032, 0.52022, -18.1926, -2.04465, 4.86536)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.744762, -0.153915, 0.649338, 0.00146152, 0.973412, 0.229056, -0.667328, -0.169643, 0.725186, 35.6548, 12.5061, 50.7842)
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.0239557, 0.994842, -0.0985718, 0.00707719, 0.0984289, 0.995119, 0.999688, -0.0245364, -0.00468275, -17.1263, 33.3375, -0.109716)
+visible = false
+
+[node name="PontaGarra_RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191072, -2.72892, 0.217353)
+mass = 0.01
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PontaGarra_RigidBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.020674, 0.113571, -0.0908403)
+shape = SubResource("BoxShape3D_1n2ut")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PontaGarra_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020674, 0.113571, -0.0908403)
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_s83es")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="request_completed" from="CanvasLayer/HTTPRequest" to="." method="_on_http_request_request_completed"]

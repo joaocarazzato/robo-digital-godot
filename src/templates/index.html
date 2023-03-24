@@ -18,10 +18,10 @@
         <div class="coordsform">
             <h2>Coordenadas</h2>
             <form action="coords" method="post">
-                <label>Valor X </label><input type="text" id="x" name="x" value="{{coordenadas[(coordenadas|length - 1)].x}}"> &nbsp;&nbsp;&nbsp; <label>Valor J1 </label><input type="text" id="j1" name="j1" value="{{coordenadas[(coordenadas|length - 1)].j1}}"><br><br>
-                <label>Valor Y </label><input type="text" id="y" name="y" value="{{coordenadas[(coordenadas|length - 1)].y}}"> &nbsp;&nbsp;&nbsp; <label>Valor J2 </label><input type="text" id="j2" name="j2" value="{{coordenadas[(coordenadas|length - 1)].j2}}"><br><br>
-                <label>Valor Z </label><input type="text" id="z" name="z" value="{{coordenadas[(coordenadas|length - 1)].z}}"> &nbsp;&nbsp;&nbsp; <label>Valor J3 </label><input type="text" id="j3" name="j3" value="{{coordenadas[(coordenadas|length - 1)].j3}}"> <br><br>
-                <label>Valor R </label><input type="text" id="r" name="r" value="{{coordenadas[(coordenadas|length - 1)].r}}"> &nbsp;&nbsp;&nbsp; <label>Valor J4 </label><input type="text" id="j4" name="j4" value="{{coordenadas[(coordenadas|length - 1)].j4}}"><br><br>
+                <label>Valor X </label><input type="text" id="x" name="x" value="{{coordenadas[(coordenadas|length - 1)].x}}"><br><br>
+                <label>Valor Y </label><input type="text" id="y" name="y" value="{{coordenadas[(coordenadas|length - 1)].y}}"><br><br>
+                <label>Valor Z </label><input type="text" id="z" name="z" value="{{coordenadas[(coordenadas|length - 1)].z}}"><br><br>
+                <label>Valor R </label><input type="text" id="r" name="r" value="{{coordenadas[(coordenadas|length - 1)].r}}"><br><br>
                 <button type="submit">Enviar</button>
             </form>
             <hr>
@@ -42,18 +42,6 @@
             </tr>
             <tr>
                 <td><b>&nbsp;R: </b>{{coordenadas[(coordenadas|length - 1)].r}}&nbsp;</td>
-            </tr>
-            <tr>
-                <td><b>&nbsp;J1: </b>{{coordenadas[(coordenadas|length - 1)].j1}}&nbsp;</td>
-            </tr>
-            <tr>
-                <td><b>&nbsp;J2: </b>{{coordenadas[(coordenadas|length - 1)].j2}}&nbsp;</td>
-            </tr>
-            <tr>
-                <td><b>&nbsp;J3: </b>{{coordenadas[(coordenadas|length - 1)].j3}}&nbsp;</td>
-            </tr>
-            <tr>
-                <td><b>&nbsp;J4: </b>{{coordenadas[(coordenadas|length - 1)].j4}}&nbsp;</td>
             </tr>
         </tbody>
         </table>

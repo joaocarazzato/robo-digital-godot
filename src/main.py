@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 from data.coordenadas import Coordenada
 
 coordenadas =[
-    Coordenada(x="0", y="0", z="0", r="0", j1="0", j2="0", j3="0", j4="0"),
+    Coordenada(x="0", y="0", z="0", r="0"),
 ]
 
 app = Flask(__name__)
@@ -17,15 +17,21 @@ def enviar_coords():
         x= request.form["x"],
         y= request.form["y"],
         z= request.form["z"],
-        r= request.form["r"],
-        j1= request.form["j1"],
-        j2= request.form["j2"],
-        j3= request.form["j3"],
-        j4= request.form["j4"]
+        r= request.form["r"]
     )
     global coordenadas
     coordenadas.append(coords)
     return redirect("/")
+
+@app.route('/godot', methods=["GET", "POST"])
+def godot_coords():
+    x = coordenadas[(len(coordenadas) - 1)].x
+    y = coordenadas[(len(coordenadas) - 1)].y
+    z = coordenadas[(len(coordenadas) - 1)].z
+    r = coordenadas[(len(coordenadas) - 1)].r
+    godotstring = f"{x}/{y}/{z}/{r}"
+    print(godotstring)
+    return godotstring
 
 
 app.run(host ="0.0.0.0", port=3000, debug=True)
