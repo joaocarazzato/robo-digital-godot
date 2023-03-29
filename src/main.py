@@ -19,6 +19,19 @@ class Coordenada(db.Model):
     y = db.Column(db.Float)
     z = db.Column(db.Float)
     r = db.Column(db.Float)
+    def __init__(self, x, y, z, r) -> None:
+        self.x = x
+        self.y = y
+        self.z = z
+        self.r = r
+
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
+    coords = Coordenada(x=0.0, y=0.0, z=0.0, r=0.0)
+    db.session.add(coords)
+    db.session.commit()
 
 #Definindo a pagina principal da nossa aplicacao Web
 @app.route("/")
